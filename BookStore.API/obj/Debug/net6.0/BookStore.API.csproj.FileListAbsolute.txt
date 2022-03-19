@@ -29,3 +29,5 @@ I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.EntityFra
 I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\AutoMapper.dll
+I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

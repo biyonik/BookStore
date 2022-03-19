@@ -1,11 +1,10 @@
+using AutoMapper;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
-using BookStore.API.Models;
 using BookStore.API.Operations.Command;
 using BookStore.API.Operations.Query;
 using BookStore.API.ViewModels.Books;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.API.Controllers
 {
@@ -15,25 +14,27 @@ namespace BookStore.API.Controllers
     public class BooksController: ControllerBase
     {
         private readonly BookStoreDbContext _context;
-        public BooksController(BookStoreDbContext context)
+        private readonly IMapper _mapper;
+        public BooksController(BookStoreDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet()]
         public async Task<IActionResult> GetBooks() 
         {
-            GetBooksQuery getBooksQuery = new GetBooksQuery(_context);
+            GetBooksQuery getBooksQuery = new GetBooksQuery(_context, _mapper);
             var bookList = await getBooksQuery.HandleAsync();
             return Ok(bookList);
         }
 
-        [HttpGet("[action]/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id) {
             BookDetailViewModel bookDetailViewModel;
             try 
             {
-                GetBookDetailQuery getBookDetailQuery = new GetBookDetailQuery(_context);
+                GetBookDetailQuery getBookDetailQuery = new GetBookDetailQuery(_context, _mapper);
                 getBookDetailQuery.BookId = id;
                 bookDetailViewModel = await getBookDetailQuery.HandleAsync();
             } catch(Exception ex) 
@@ -43,12 +44,12 @@ namespace BookStore.API.Controllers
             return Ok(bookDetailViewModel);
         }
 
-        [HttpPost]
+        [HttpPost("")]
         public async Task<IActionResult> Add([FromBody] BookForAddDto entity) 
         {
             try 
             {
-                CreateBookCommand createBookCommand = new CreateBookCommand(_context);
+                CreateBookCommand createBookCommand = new CreateBookCommand(_context, _mapper);
                 createBookCommand.BookForAddDto = entity;
                 await createBookCommand.HandleAsync();
                 
@@ -59,12 +60,12 @@ namespace BookStore.API.Controllers
             return Ok();
         }
 
-        [HttpPut("[action]/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] BookForUpdateDto entity) 
         {
             try 
             {
-                UpdateBookCommand updateBookCommand = new UpdateBookCommand(_context);
+                UpdateBookCommand updateBookCommand = new UpdateBookCommand(_context, _mapper);
                 updateBookCommand.BookId = id;
                 updateBookCommand.BookForUpdateDto = entity;
                 await updateBookCommand.HandleAsync();
@@ -75,7 +76,7 @@ namespace BookStore.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("[action]/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try 

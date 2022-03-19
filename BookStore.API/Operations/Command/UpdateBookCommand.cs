@@ -1,5 +1,7 @@
+using AutoMapper;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
+using BookStore.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.API.Operations.Command
@@ -9,9 +11,11 @@ namespace BookStore.API.Operations.Command
         public int BookId { get; set; }
         public BookForUpdateDto BookForUpdateDto { get; set; }
         private readonly BookStoreDbContext _context;
-        public UpdateBookCommand(BookStoreDbContext context)
+        private readonly IMapper _mapper;
+        public UpdateBookCommand(BookStoreDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task HandleAsync()
@@ -21,11 +25,8 @@ namespace BookStore.API.Operations.Command
             {
                 throw new InvalidOperationException("Böyle bir kitap kaydı bulunamadı");
             }
-            bookIsExists.GenreId = BookForUpdateDto.GenreId;
-            bookIsExists.Title = BookForUpdateDto.Title;
-            bookIsExists.PageCount = BookForUpdateDto.PageCount;
-            bookIsExists.PublishDate = BookForUpdateDto.PublishDate;
-            _context.Books.Update(bookIsExists);
+            var book = _mapper.Map<Book>(BookForUpdateDto);
+            _context.Books.Update(book);
             await _context.SaveChangesAsync();
         }
         
