@@ -51,19 +51,12 @@ namespace BookStore.API.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Add([FromBody] BookForAddDto entity) 
         {
-            try 
-            {
-                CreateBookCommand createBookCommand = new CreateBookCommand(_context, _mapper);
-                createBookCommand.BookForAddDto = entity;
-                CreateBookCommandValidator createBookCommandValidator = new CreateBookCommandValidator();
-                await createBookCommandValidator.ValidateAndThrowAsync(createBookCommand);
-                
-                await createBookCommand.HandleAsync();
-                
-            } catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            CreateBookCommand createBookCommand = new CreateBookCommand(_context, _mapper);
+            createBookCommand.BookForAddDto = entity;
+            CreateBookCommandValidator createBookCommandValidator = new CreateBookCommandValidator();
+            await createBookCommandValidator.ValidateAndThrowAsync(createBookCommand);
+            
+            await createBookCommand.HandleAsync();
             return Ok();
         }
 

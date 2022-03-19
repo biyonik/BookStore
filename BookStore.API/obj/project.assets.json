@@ -985,11 +985,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "i:\\Projects\\NetCore\\BookStore\\BookStore.API\\BookStore.API.csproj",
+      "projectUniqueName": "I:\\Projects\\NetCore\\BookStore\\BookStore.API\\BookStore.API.csproj",
       "projectName": "BookStore.API",
-      "projectPath": "i:\\Projects\\NetCore\\BookStore\\BookStore.API\\BookStore.API.csproj",
+      "projectPath": "I:\\Projects\\NetCore\\BookStore\\BookStore.API\\BookStore.API.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "i:\\Projects\\NetCore\\BookStore\\BookStore.API\\obj\\",
+      "outputPath": "I:\\Projects\\NetCore\\BookStore\\BookStore.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
@@ -1003,6 +1003,8 @@
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

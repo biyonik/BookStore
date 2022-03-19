@@ -1,5 +1,6 @@
 using System.Reflection;
 using BookStore.API.Contexts.EntityFrameworkCore;
+using BookStore.API.Extensions.MiddlewareExtensions;
 using BookStore.API.Generators;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCustomExceptionMiddleware();
 
 app.MapControllers();
 
