@@ -23,12 +23,6 @@ namespace BookStore.API.Operations.Command
             if(book is not null) {
                 throw new InvalidOperationException("Bu kitap zaten eklenmiş!");
             }
-            // book = new Book {
-            //     Title = BookForAddDto.Title,
-            //     GenreId = BookForAddDto.GenreId,
-            //     PageCount = BookForAddDto.PageCount,
-            //     PublishDate = BookForAddDto.PublishDate
-            // };
             book = _mapper.Map<Book>(BookForAddDto);
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();

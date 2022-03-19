@@ -31,3 +31,6 @@ I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.Extension
 I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
 I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\AutoMapper.dll
 I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\FluentValidation.dll
+I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+I:\Projects\NetCore\BookStore\BookStore.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll

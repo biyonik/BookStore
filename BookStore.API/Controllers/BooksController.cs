@@ -3,7 +3,9 @@ using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
 using BookStore.API.Operations.Command;
 using BookStore.API.Operations.Query;
+using BookStore.API.Validators.FluentValidation;
 using BookStore.API.ViewModels.Books;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.API.Controllers
@@ -36,6 +38,8 @@ namespace BookStore.API.Controllers
             {
                 GetBookDetailQuery getBookDetailQuery = new GetBookDetailQuery(_context, _mapper);
                 getBookDetailQuery.BookId = id;
+                GetBookQueryValidator getBookQueryValidator = new GetBookQueryValidator();
+                await getBookQueryValidator.ValidateAndThrowAsync(getBookDetailQuery);
                 bookDetailViewModel = await getBookDetailQuery.HandleAsync();
             } catch(Exception ex) 
             {
@@ -51,6 +55,9 @@ namespace BookStore.API.Controllers
             {
                 CreateBookCommand createBookCommand = new CreateBookCommand(_context, _mapper);
                 createBookCommand.BookForAddDto = entity;
+                CreateBookCommandValidator createBookCommandValidator = new CreateBookCommandValidator();
+                await createBookCommandValidator.ValidateAndThrowAsync(createBookCommand);
+                
                 await createBookCommand.HandleAsync();
                 
             } catch(Exception ex)
@@ -68,6 +75,8 @@ namespace BookStore.API.Controllers
                 UpdateBookCommand updateBookCommand = new UpdateBookCommand(_context, _mapper);
                 updateBookCommand.BookId = id;
                 updateBookCommand.BookForUpdateDto = entity;
+                UpdateBookCommandValidator updateBookCommandValidator = new UpdateBookCommandValidator();
+                await updateBookCommandValidator.ValidateAndThrowAsync(updateBookCommand);
                 await updateBookCommand.HandleAsync();
             } catch(Exception ex)
             {
@@ -83,6 +92,8 @@ namespace BookStore.API.Controllers
             {
                 DeleteBookCommand deleteBookCommand = new DeleteBookCommand(_context);
                 deleteBookCommand.BookId = id;
+                DeleteBookCommandValidator deleteBookCommandValidator = new DeleteBookCommandValidator();
+                await deleteBookCommandValidator.ValidateAndThrowAsync(deleteBookCommand);
                 await deleteBookCommand.HandleAsync(); 
             }
             catch(Exception ex)
