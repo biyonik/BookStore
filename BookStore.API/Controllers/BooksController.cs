@@ -34,17 +34,11 @@ namespace BookStore.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id) {
             BookDetailViewModel bookDetailViewModel;
-            try 
-            {
-                GetBookDetailQuery getBookDetailQuery = new GetBookDetailQuery(_context, _mapper);
-                getBookDetailQuery.BookId = id;
-                GetBookQueryValidator getBookQueryValidator = new GetBookQueryValidator();
-                await getBookQueryValidator.ValidateAndThrowAsync(getBookDetailQuery);
-                bookDetailViewModel = await getBookDetailQuery.HandleAsync();
-            } catch(Exception ex) 
-            {
-                return BadRequest(ex.Message);
-            }
+            GetBookDetailQuery getBookDetailQuery = new GetBookDetailQuery(_context, _mapper);
+            getBookDetailQuery.BookId = id;
+            GetBookQueryValidator getBookQueryValidator = new GetBookQueryValidator();
+            await getBookQueryValidator.ValidateAndThrowAsync(getBookDetailQuery);
+            bookDetailViewModel = await getBookDetailQuery.HandleAsync();
             return Ok(bookDetailViewModel);
         }
 
@@ -63,36 +57,23 @@ namespace BookStore.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] BookForUpdateDto entity) 
         {
-            try 
-            {
-                UpdateBookCommand updateBookCommand = new UpdateBookCommand(_context, _mapper);
-                updateBookCommand.BookId = id;
-                updateBookCommand.BookForUpdateDto = entity;
-                UpdateBookCommandValidator updateBookCommandValidator = new UpdateBookCommandValidator();
-                await updateBookCommandValidator.ValidateAndThrowAsync(updateBookCommand);
-                await updateBookCommand.HandleAsync();
-            } catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            UpdateBookCommand updateBookCommand = new UpdateBookCommand(_context, _mapper);
+            updateBookCommand.BookId = id;
+            updateBookCommand.BookForUpdateDto = entity;
+            UpdateBookCommandValidator updateBookCommandValidator = new UpdateBookCommandValidator();
+            await updateBookCommandValidator.ValidateAndThrowAsync(updateBookCommand);
+            await updateBookCommand.HandleAsync();
             return Ok();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            try 
-            {
-                DeleteBookCommand deleteBookCommand = new DeleteBookCommand(_context);
-                deleteBookCommand.BookId = id;
-                DeleteBookCommandValidator deleteBookCommandValidator = new DeleteBookCommandValidator();
-                await deleteBookCommandValidator.ValidateAndThrowAsync(deleteBookCommand);
-                await deleteBookCommand.HandleAsync(); 
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            DeleteBookCommand deleteBookCommand = new DeleteBookCommand(_context);
+            deleteBookCommand.BookId = id;
+            DeleteBookCommandValidator deleteBookCommandValidator = new DeleteBookCommandValidator();
+            await deleteBookCommandValidator.ValidateAndThrowAsync(deleteBookCommand);
+            await deleteBookCommand.HandleAsync(); 
             return Ok();
         }
     }
