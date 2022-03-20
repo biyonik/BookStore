@@ -1,10 +1,9 @@
 using AutoMapper;
 using BookStore.API.Contexts.EntityFrameworkCore;
-using BookStore.API.Models;
 using BookStore.API.ViewModels.Books;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.API.Operations.Query
+namespace BookStore.API.Operations.Query.Book
 {
     public class GetBooksQuery
     {
@@ -18,7 +17,7 @@ namespace BookStore.API.Operations.Query
 
         public async Task<List<BooksViewModel>> HandleAsync()
         {
-            var bookList = await _context.Books.OrderByDescending(b => b.Id).ToListAsync<Book>();
+            var bookList = await _context.Books.OrderByDescending(b => b.Id).ToListAsync<Models.Book>();
             List<BooksViewModel> booksViewModels = _mapper.Map<List<BooksViewModel>>(bookList);
             return booksViewModels;
         }

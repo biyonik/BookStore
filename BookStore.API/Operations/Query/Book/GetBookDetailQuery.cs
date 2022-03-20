@@ -3,7 +3,7 @@ using BookStore.API.ViewModels.Books;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 
-namespace BookStore.API.Operations.Query
+namespace BookStore.API.Operations.Query.Book
 {
     public class GetBookDetailQuery
     {

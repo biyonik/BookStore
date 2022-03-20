@@ -1,8 +1,8 @@
 using AutoMapper;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
-using BookStore.API.Operations.Command;
-using BookStore.API.Operations.Query;
+using BookStore.API.Operations.Command.Book;
+using BookStore.API.Operations.Query.Book;
 using BookStore.API.Validators.FluentValidation;
 using BookStore.API.ViewModels.Books;
 using FluentValidation;

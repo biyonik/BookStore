@@ -1,4 +1,4 @@
-using BookStore.API.Operations.Command;
+using BookStore.API.Operations.Command.Book;
 using FluentValidation;
 
 namespace BookStore.API.Validators.FluentValidation

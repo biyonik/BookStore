@@ -1,10 +1,9 @@
 using AutoMapper;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
-using BookStore.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.API.Operations.Command
+namespace BookStore.API.Operations.Command.Book
 {
     public class CreateBookCommand
     {
@@ -23,7 +22,7 @@ namespace BookStore.API.Operations.Command
             if(book is not null) {
                 throw new InvalidOperationException("Bu kitap zaten eklenmiş!");
             }
-            book = _mapper.Map<Book>(BookForAddDto);
+            book = _mapper.Map<Models.Book>(BookForAddDto);
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
         }

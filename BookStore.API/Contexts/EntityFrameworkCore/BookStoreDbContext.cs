@@ -10,5 +10,6 @@ namespace BookStore.API.Contexts.EntityFrameworkCore
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<Genre> Genres { get; set; }
     }
 }

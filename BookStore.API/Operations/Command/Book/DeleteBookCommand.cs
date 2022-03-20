@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.API.Operations.Command
+namespace BookStore.API.Operations.Command.Book
 {
     public class DeleteBookCommand
     {

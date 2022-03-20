@@ -2,6 +2,8 @@ using System.Reflection;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.Extensions.MiddlewareExtensions;
 using BookStore.API.Generators;
+using BookStore.API.Services.Abstract;
+using BookStore.API.Services.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,7 @@ builder.Services.AddDbContext<BookStoreDbContext>(options => {
 });
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddSingleton<ILoggerService, ConsoleLogger>();
 
 var app = builder.Build();
 

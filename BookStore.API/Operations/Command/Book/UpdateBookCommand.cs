@@ -1,10 +1,9 @@
 using AutoMapper;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
-using BookStore.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.API.Operations.Command
+namespace BookStore.API.Operations.Command.Book
 {
     public class UpdateBookCommand
     {
@@ -25,7 +24,7 @@ namespace BookStore.API.Operations.Command
             {
                 throw new InvalidOperationException("Böyle bir kitap kaydı bulunamadı");
             }
-            var book = _mapper.Map<Book>(BookForUpdateDto);
+            var book = _mapper.Map<Models.Book>(BookForUpdateDto);
             _context.Books.Update(book);
             await _context.SaveChangesAsync();
         }

@@ -13,6 +13,22 @@ namespace BookStore.API.Generators
             {
                 return;
             }
+            
+            context.Genres.AddRange(new Genre[] {
+                new Genre
+                {
+                    Name = "Personal Growth"
+                },
+                new Genre
+                {
+                    Name = "Science Fiction"
+                },
+                new Genre
+                {
+                    Name = "Romance"
+                }
+            });
+
             context.Books.AddRange(new Book[] {
                 new Book {
                     Title="Lean Startup",
