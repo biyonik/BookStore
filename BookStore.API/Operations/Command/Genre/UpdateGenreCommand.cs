@@ -1,6 +1,6 @@
 
 using AutoMapper;
-using BookStore.API.Contexts.EntityFrameworkCore;
+using BookStore.API.Contexts;
 using BookStore.API.DataTransferObjects.Genre;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,12 +8,12 @@ namespace BookStore.API.Operations.Command.Genre
 {
     public class UpdateGenreCommand
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IDbContext _context;
         private readonly IMapper _mapper;
         public int GenreId {get; set;}
         public GenreForUpdateDto GenreForUpdateDto {get; set;}
 
-        public UpdateGenreCommand(BookStoreDbContext context, IMapper mapper)
+        public UpdateGenreCommand(IDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

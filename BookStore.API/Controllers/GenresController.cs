@@ -1,5 +1,5 @@
 using AutoMapper;
-using BookStore.API.Contexts.EntityFrameworkCore;
+using BookStore.API.Contexts;
 using BookStore.API.DataTransferObjects.Genre;
 using BookStore.API.Operations.Command.Genre;
 using BookStore.API.Operations.Query.Genre;
@@ -14,10 +14,10 @@ namespace BookStore.API.Controllers
     [Produces("application/json")]
     public class GenresController : ControllerBase
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IDbContext _context;
         private readonly IMapper _mapper;
 
-        public GenresController(BookStoreDbContext context, IMapper mapper)
+        public GenresController(IDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

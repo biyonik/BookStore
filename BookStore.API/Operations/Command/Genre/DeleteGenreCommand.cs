@@ -1,3 +1,4 @@
+using BookStore.API.Contexts;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,9 +7,9 @@ namespace BookStore.API.Operations.Command.Genre
     public class DeleteGenreCommand
     {
         public int GenreId {get; set;}
-        private readonly BookStoreDbContext _context;
+        private readonly IDbContext _context;
 
-        public DeleteGenreCommand(BookStoreDbContext context)
+        public DeleteGenreCommand(IDbContext context)
         {
             _context = context;
         }  

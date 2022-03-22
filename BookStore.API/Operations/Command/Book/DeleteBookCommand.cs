@@ -1,3 +1,4 @@
+using BookStore.API.Contexts;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,9 +6,9 @@ namespace BookStore.API.Operations.Command.Book
 {
     public class DeleteBookCommand
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IDbContext _context;
         public int BookId { get; set; }
-        public DeleteBookCommand(BookStoreDbContext context)
+        public DeleteBookCommand(IDbContext context)
         {
             _context = context;
         }

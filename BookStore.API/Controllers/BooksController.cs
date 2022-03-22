@@ -1,4 +1,5 @@
 using AutoMapper;
+using BookStore.API.Contexts;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
 using BookStore.API.Operations.Command.Book;
@@ -15,9 +16,9 @@ namespace BookStore.API.Controllers
     [Produces("application/json")]
     public class BooksController: ControllerBase
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IDbContext _context;
         private readonly IMapper _mapper;
-        public BooksController(BookStoreDbContext context, IMapper mapper)
+        public BooksController(IDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -1,4 +1,5 @@
 using AutoMapper;
+using BookStore.API.Contexts;
 using BookStore.API.Contexts.EntityFrameworkCore;
 using BookStore.API.DataTransferObjects.Book;
 using Microsoft.EntityFrameworkCore;
@@ -8,9 +9,9 @@ namespace BookStore.API.Operations.Command.Book
     public class CreateBookCommand
     {
         public BookForAddDto BookForAddDto { get; set; }
-        private readonly BookStoreDbContext _context;
+        private readonly IDbContext _context;
         private readonly IMapper _mapper;
-        public CreateBookCommand(BookStoreDbContext context, IMapper mapper)
+        public CreateBookCommand(IDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
