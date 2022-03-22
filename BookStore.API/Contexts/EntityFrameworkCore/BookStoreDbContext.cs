@@ -11,6 +11,7 @@ namespace BookStore.API.Contexts.EntityFrameworkCore
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) 
         {

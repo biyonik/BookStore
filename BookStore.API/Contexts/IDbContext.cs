@@ -7,6 +7,7 @@ namespace BookStore.API.Contexts
     {
         DbSet<Book> Books {get; set;}
         DbSet<Genre> Genres {get; set;}
+        DbSet<User> Users {get; set;}
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
         int SaveChanges();

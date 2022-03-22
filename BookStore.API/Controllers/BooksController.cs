@@ -7,6 +7,7 @@ using BookStore.API.Operations.Query.Book;
 using BookStore.API.Validators.FluentValidation;
 using BookStore.API.ViewModels.Books;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.API.Controllers
@@ -14,6 +15,7 @@ namespace BookStore.API.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
+    [Authorize]
     public class BooksController: ControllerBase
     {
         private readonly IDbContext _context;

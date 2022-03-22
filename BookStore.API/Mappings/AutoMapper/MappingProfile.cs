@@ -1,6 +1,7 @@
 using AutoMapper;
 using BookStore.API.DataTransferObjects.Book;
 using BookStore.API.DataTransferObjects.Genre;
+using BookStore.API.DataTransferObjects.User;
 using BookStore.API.Models;
 using BookStore.API.ViewModels.Books;
 using BookStore.API.ViewModels.Genres;
@@ -35,6 +36,9 @@ namespace BookStore.API.Mappings.AutoMapper
             CreateMap<Genre, GenreDetailViewModel>().ReverseMap();
             CreateMap<GenreForAddDto, Genre>().ReverseMap();
             CreateMap<GenreForUpdateDto, Genre>().ReverseMap();
+
+            // User Profile
+            CreateMap<User, CreateUserDto>().ReverseMap();
         }
     }
 }
